@@ -1,0 +1,220 @@
+// VARIABLES
+
+$greenBorder: 2px solid rgb(121, 219, 121);
+$redBorder: 2px solid rgb(224, 126, 126);
+
+@mixin displayFeedback {
+    display: flex;
+    width: 100%;
+    border-radius: 0.3rem;;
+}
+
+// GLOBAL
+
+html,
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Helvetica, sans-serif;
+}
+
+// LAYOUT
+
+.header-container {
+    width: 100%;
+    background-color: rgb(85, 134, 85);
+    border-bottom: 3px solid rgb(255, 255, 255);
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    grid-template-rows: 0.5fr 3fr;
+    grid-template-areas: 
+        "feedback feedback"
+        "form list"
+    ;
+    row-gap: 2rem;
+    column-gap: 3rem;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+// SECTIONS
+
+// Header
+.title {
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    padding-top: 2rem;
+    margin-left: 2rem;
+    margin-top: 0rem;
+}
+.subtitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    padding-bottom: 0.7rem;
+    margin-left: 2rem;
+}
+
+// Feedback
+.feedback-wrapper {
+    grid-area: feedback;
+    width: 100%;
+}
+
+.feedback-container-success {
+    @include displayFeedback();
+    background-color:rgb(178, 233, 178);
+}
+
+.feedback-container-failure {
+    @include displayFeedback();
+    background-color:rgb(233, 178, 178);
+}
+
+.feedback-container-delete {
+    @include displayFeedback();
+    background-color:rgb(250, 243, 142);
+}
+
+.feedback {
+    font-weight: 500;
+    color:rgb(49, 49, 49);
+    padding: 0.5rem;
+}
+
+// Product form
+.product-form {
+    grid-area: form;
+    display: grid;
+    grid-template-rows: 1.5fr 1fr 1fr 1fr 1.2fr;
+    grid-template-areas: 
+        "title"
+        "name-container"
+        "price-container"
+        "year-container"
+        "button"
+    ;
+    row-gap: 0.5rem;
+    padding: 1rem;
+    border: 3px solid rgb(93, 146, 93);
+    border-radius: 1rem;
+    box-shadow: 5px 5px 10px rgb(160, 160, 160);
+}
+
+h2 {
+    grid-area: title;
+    text-align: center;
+    color: rgb(19, 54, 19)
+}
+
+#name-container {
+    grid-area: name-container;
+}
+
+#price-container {
+    grid-area: price-container;
+}
+
+#year-container {
+    grid-area: year-container;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    height: 3.5rem;
+}
+
+#name, 
+#price, 
+#year {
+    height: 100%;
+    outline: none;
+}
+
+#add-btn {
+    grid-area: button;
+    font-size: 1.1rem;
+    height: 100%;
+    border: none;
+    border-radius: 0.5rem;
+    outline: none;
+    background-color: rgb(93, 146, 93);
+    color: white;
+}
+
+#add-btn:hover {
+    background-color: rgb(35, 126, 13);
+    cursor: pointer;
+}
+
+small {
+    visibility: hidden;
+    margin-left: 0.5rem;
+}
+
+// Product list 
+.list-container {
+    grid-area: list;
+}
+
+.product-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid rgb(93, 146, 93);
+    border-radius: 1rem;
+    margin-bottom: 1rem;;
+    box-shadow: 5px 5px 10px rgb(160, 160, 160);
+}
+
+.product {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.delete-btn {
+    font-size: 1.1rem;
+    background-color: rgb(218, 96, 96);
+    border: none;
+    border-radius: 0.3rem;
+    color: white;
+    outline: none;
+    margin-right: 1rem;
+}
+.delete-btn:hover {
+    background-color: rgb(196, 32, 32);
+    cursor: pointer;
+}
+
+// VALIDITY SETTINGS
+
+.error small {
+    visibility: visible;
+    color:rgb(224, 126, 126);
+}
+
+.success input {
+    border: $greenBorder;
+}
+
+.error input{
+    border: $redBorder;
+}
+
+// MEDIA QUERIES
+@media only screen and (max-width: 900px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 3fr 3fr;
+        grid-template-areas: 
+            "feedback"
+            "form"
+            "list"
+        ;
+    }
+}

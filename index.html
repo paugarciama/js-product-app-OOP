@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/script.js" defer></script>
+        <title>Add a product</title>
+    </head>
+
+    <body>
+        
+        <header class="header-container">
+            <h1 class="title">Product App</h1>
+            <p class="subtitle">Pick anything you need</p>
+        </header>
+
+        <div class="wrapper">
+
+            <section class="feedback-wrapper"></section>
+
+            <form class="product-form" action="" method="get">
+                <h2 class="form-title">Add a product</h2>
+                <div id="name-container" class="form-group">
+                    <label for="name"></label>
+                    <input type="text" id="name" name="name" placeholder="Product Name">
+                    <small class="small1">Error</small>
+                </div>
+                <div id="price-container" class="form-group">
+                    <label for="price"></label>
+                    <input type="text" id="price" name="price" placeholder="Product Price">
+                    <small class="small2">Error</small>
+                </div>
+                <div id="year-container" class="form-group">
+                    <label for="year"></label>
+                    <input type="text" id="year" name="year" placeholder="Product Year">
+                    <small class="small3">Error</small>
+                </div>
+                <button type="submit" id="add-btn">Save</button>
+            </form>
+
+            <section class="list-container"></section>
+
+        </div>
+     
+    </body>
+
+</html>
