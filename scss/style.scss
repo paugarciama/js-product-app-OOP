@@ -6,7 +6,8 @@ $redBorder: 2px solid rgb(224, 126, 126);
 @mixin displayFeedback {
     display: flex;
     width: 100%;
-    border-radius: 0.3rem;;
+    border-radius: 0.3rem;
+    animation-duration: 3s;
 }
 
 // GLOBAL
@@ -68,22 +69,73 @@ body {
 .feedback-container-success {
     @include displayFeedback();
     background-color:rgb(178, 233, 178);
+    animation-name: feedback-success;
 }
 
 .feedback-container-failure {
     @include displayFeedback();
     background-color:rgb(233, 178, 178);
+    animation-name: feedback-failure;
 }
 
 .feedback-container-delete {
     @include displayFeedback();
     background-color:rgb(250, 243, 142);
+    animation-name: feedback-delete;
+}
+
+.feedback-container-repeated {
+    @include displayFeedback();
+    background-color:rgb(250, 209, 142);
+    animation-name: feedback-repeated;
+}
+
+@keyframes feedback-success {
+    0% {background-color: rgb(178, 233, 178);}
+    25% {background-color: rgb(178, 233, 178);}
+    50% {background-color: rgb(178, 233, 178);}
+    85% {background-color: rgb(178, 233, 178);}
+    100% {background-color: rgba(255, 255, 255, 0);}
+}
+
+@keyframes feedback-delete {
+    0% {background-color: rgb(250, 243, 142);}
+    25% {background-color: rgb(250, 243, 142);}
+    50% {background-color: rgb(250, 243, 142);}
+    85% {background-color: rgb(250, 243, 142);}
+    100% {background-color: rgba(255, 255, 255, 0);}
+}
+
+@keyframes feedback-failure {
+    0% {background-color: rgb(233, 178, 178);}
+    25% {background-color: rgb(233, 178, 178);}
+    50% {background-color: rgb(233, 178, 178);}
+    85% {background-color: rgb(233, 178, 178);}
+    100% {background-color: rgba(255, 255, 255, 0);}
+}
+
+@keyframes feedback-repeated {
+    0% {background-color: rgb(250, 209, 142);}
+    25% {background-color: rgb(250, 209, 142);}
+    50% {background-color: rgb(250, 209, 142);}
+    85% {background-color: rgb(250, 209, 142);}
+    100% {background-color: rgba(255, 255, 255, 0);}
 }
 
 .feedback {
     font-weight: 500;
     color:rgb(49, 49, 49);
     padding: 0.5rem;
+    animation-name: feedback-text;
+    animation-duration: 3s;
+}
+
+@keyframes feedback-text {
+    0% {color: rgb(49, 49, 49);}
+    25% {color: rgb(49, 49, 49);}
+    50% {color: rgb(49, 49, 49);}
+    85% {color: rgb(49, 49, 49);}
+    100% {color: rgba(255, 255, 255, 0);}
 }
 
 // Product form

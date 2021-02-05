@@ -6,7 +6,7 @@ class Product {
         this.price = price;
         this.year = year;
     }
-    addProduct() {
+    addProduct() {        
         const productList = document.querySelector(".list-container");
 
         const productContainer = document.createElement("article");
@@ -25,11 +25,14 @@ class Product {
         productContainer.appendChild(deleteButton);
 
         deleteButton.addEventListener("click", () => {
+            extractProduct(listedProducts, this);
             productContainer.remove();
             resetFeedback();
             this.showFeedback("feedback-container-delete", "Product successfully deleted");
             setFullFeedback();
+            setTimeout(() => resetFeedback(), 3000);
         })
+        avoidSame(this, productContainer);
     }
     showFeedback(containerClass, message) {
         const feedbackWrapper = document.querySelector(".feedback-wrapper");
@@ -111,20 +114,26 @@ function validateForm(nameValue, priceValue, yearValue) {
     const nameVal = document.getElementById("name-container");
     const priceVal = document.getElementById("price-container");
     const yearVal = document.getElementById("year-container");
-  
+
+    const product = new Product(nameValue, priceValue, yearValue);
+
     if (nameVal.classList.contains("success") && priceVal.classList.contains("success") && yearVal.classList.contains("success")) {
-      const product = new Product(nameValue, priceValue, yearValue);
-      product.addProduct();
-      resetFeedback();
-      product.showFeedback("feedback-container-success", "Product has been successfully added");
+      
+      product.showFeedback("feedback-container-success", "Product successfully added");
       setFullFeedback();
+      setTimeout(() => resetFeedback(), 3000);
+      
       productForm.reset();
       resetForm(nameVal, priceVal, yearVal);
+
+      product.addProduct();
+      insertProduct(listedProducts, product);
+
     } else {
-      const product = new Product(nameValue, priceValue, yearValue);
       resetFeedback();
       product.showFeedback("feedback-container-failure", "There are empty or invalid fields");
       setFullFeedback();
+      setTimeout(() => resetFeedback(), 3000);
     }
 }
 
@@ -147,4 +156,29 @@ function resetFeedback() {
 function setFullFeedback() {
     const feedbackWrapper = document.querySelector(".feedback-wrapper");
     feedbackWrapper.classList.add("full");
+}
+
+// ARRAY PRODUCT MANAGEMENT
+const listedProducts = [];
+
+function insertProduct(arr, obj) {
+  arr.push(obj);
+  console.log(arr);
+}
+
+function extractProduct(arr, obj) {
+  arr.splice(obj, 1);
+}
+
+function avoidSame(product, element) {
+  listedProducts.forEach(item => {
+    if (item.name.includes(product.name)) {
+      extractProduct(listedProducts, product);
+      element.remove();
+      resetFeedback();
+      product.showFeedback("feedback-container-repeated", "This product is already in the list");
+      setFullFeedback();
+      setTimeout(() => resetFeedback(), 3000);
+    }
+  })
 }

@@ -48,29 +48,131 @@ body {
   display: flex;
   width: 100%;
   border-radius: 0.3rem;
+  animation-duration: 3s;
   background-color: #b2e9b2;
+  animation-name: feedback-success;
 }
 
 .feedback-container-failure {
   display: flex;
   width: 100%;
   border-radius: 0.3rem;
+  animation-duration: 3s;
   background-color: #e9b2b2;
+  animation-name: feedback-failure;
 }
 
 .feedback-container-delete {
   display: flex;
   width: 100%;
   border-radius: 0.3rem;
+  animation-duration: 3s;
   background-color: #faf38e;
+  animation-name: feedback-delete;
 }
 
+.feedback-container-repeated {
+  display: flex;
+  width: 100%;
+  border-radius: 0.3rem;
+  animation-duration: 3s;
+  background-color: #fad18e;
+  animation-name: feedback-repeated;
+}
+
+@keyframes feedback-success {
+  0% {
+    background-color: #b2e9b2;
+  }
+  25% {
+    background-color: #b2e9b2;
+  }
+  50% {
+    background-color: #b2e9b2;
+  }
+  85% {
+    background-color: #b2e9b2;
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+@keyframes feedback-delete {
+  0% {
+    background-color: #faf38e;
+  }
+  25% {
+    background-color: #faf38e;
+  }
+  50% {
+    background-color: #faf38e;
+  }
+  85% {
+    background-color: #faf38e;
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+@keyframes feedback-failure {
+  0% {
+    background-color: #e9b2b2;
+  }
+  25% {
+    background-color: #e9b2b2;
+  }
+  50% {
+    background-color: #e9b2b2;
+  }
+  85% {
+    background-color: #e9b2b2;
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+@keyframes feedback-repeated {
+  0% {
+    background-color: #fad18e;
+  }
+  25% {
+    background-color: #fad18e;
+  }
+  50% {
+    background-color: #fad18e;
+  }
+  85% {
+    background-color: #fad18e;
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
 .feedback {
   font-weight: 500;
   color: #313131;
   padding: 0.5rem;
+  animation-name: feedback-text;
+  animation-duration: 3s;
 }
 
+@keyframes feedback-text {
+  0% {
+    color: #313131;
+  }
+  25% {
+    color: #313131;
+  }
+  50% {
+    color: #313131;
+  }
+  85% {
+    color: #313131;
+  }
+  100% {
+    color: rgba(255, 255, 255, 0);
+  }
+}
 .product-form {
   grid-area: form;
   display: grid;
